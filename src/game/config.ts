@@ -10,7 +10,7 @@ import { SaveLoadScene } from './scenes/SaveLoadScene';
 
 export function createGameConfig(parent: string): Phaser.Types.Core.GameConfig {
   return {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     parent,
     width: 960,
     height: 640,
@@ -37,6 +37,10 @@ export function createGameConfig(parent: string): Phaser.Types.Core.GameConfig {
       InventoryScene,
       SaveLoadScene,
     ],
+    fps: {
+      target: 30,
+      forceSetTimeOut: true,
+    },
     render: {
       pixelArt: true,
       antialias: false,

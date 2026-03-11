@@ -219,7 +219,7 @@ export class ExplorationScene extends Phaser.Scene {
       if (npcDef.role === 'Quest Giver' || npcDef.role === 'Quest') {
         const marker = this.add.image(0, -32, 'quest_marker').setScale(0.8);
         container.add(marker);
-        this.tweens.add({ targets: marker, y: -38, duration: 600, yoyo: true, repeat: -1 });
+        this.tweens.add({ targets: marker, y: -38, duration: 600, yoyo: true, repeat: 5 });
       }
 
       this.entitySprites.set(`npc_${npcPlacement.id}_${npcPlacement.x}_${npcPlacement.y}`, container);
@@ -250,8 +250,8 @@ export class ExplorationScene extends Phaser.Scene {
       const sprite = this.add.image(0, 0, 'enemy_marker').setScale(1.2);
       container.add(sprite);
 
-      // Pulsing effect
-      this.tweens.add({ targets: sprite, scaleX: 1.4, scaleY: 1.4, duration: 800, yoyo: true, repeat: -1 });
+      // Pulsing effect (limited repeats for low-end device perf)
+      this.tweens.add({ targets: sprite, scaleX: 1.4, scaleY: 1.4, duration: 800, yoyo: true, repeat: 3 });
 
       this.entitySprites.set(key, container);
 
@@ -283,7 +283,7 @@ export class ExplorationScene extends Phaser.Scene {
       }).setOrigin(0.5);
       container.add(label);
 
-      this.tweens.add({ targets: sprite, angle: 360, duration: 3000, repeat: -1 });
+      this.tweens.add({ targets: sprite, angle: 360, duration: 3000, repeat: 5 });
 
       this.entitySprites.set(`portal_${portal.x}_${portal.y}`, container);
     }
